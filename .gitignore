@@ -1,0 +1,8 @@
+node_modules/
+input/
+work/
+out/
+package-lock.json
+*.mov
+*.mp4
+__pycache__/
