@@ -80,7 +80,7 @@ export const Flavia02Scenes: React.FC = () => (
       <Gap h={30} />
       <Headline at={47.69} text="Booster *Repair*" size={100} />
       <Gap h={40} />
-      <Card at={48.31} label="Pra usar no" value="Cabelo" width={480} />
+      <Card at={48.31} label="Óleo pra" value="Cabelo" width={480} />
     </Scene>
 
     {/* 9 · compras da WePink, última live */}
