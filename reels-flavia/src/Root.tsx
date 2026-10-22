@@ -1,6 +1,7 @@
 import React from "react";
 import { Composition, staticFile } from "remotion";
 import { Reel } from "./layout/Reel";
+import { Luxo47, LUXO47_DURACAO } from "./listas/Luxo47";
 import { reels } from "./reels";
 import { FPS, HEIGHT, ritmo, WIDTH } from "./theme";
 import type { Transcript } from "./types";
@@ -34,5 +35,13 @@ export const Root: React.FC = () => (
         }}
       />
     ))}
+    <Composition
+      id="luxo-47"
+      component={Luxo47}
+      width={WIDTH}
+      height={HEIGHT}
+      fps={FPS}
+      durationInFrames={Math.ceil(LUXO47_DURACAO * FPS)}
+    />
   </>
 );
