@@ -2,6 +2,7 @@ import React from "react";
 import { Composition, staticFile } from "remotion";
 import { Reel } from "./layout/Reel";
 import { Luxo47, LUXO47_DURACAO } from "./listas/Luxo47";
+import { Luxo47Video, LUXO47_VIDEO_DURACAO } from "./listas/Luxo47Video";
 import { reels } from "./reels";
 import { FPS, HEIGHT, ritmo, WIDTH } from "./theme";
 import type { Transcript } from "./types";
@@ -42,6 +43,14 @@ export const Root: React.FC = () => (
       height={HEIGHT}
       fps={FPS}
       durationInFrames={Math.ceil(LUXO47_DURACAO * FPS)}
+    />
+    <Composition
+      id="luxo-47-video"
+      component={Luxo47Video}
+      width={WIDTH}
+      height={HEIGHT}
+      fps={FPS}
+      durationInFrames={Math.ceil(LUXO47_VIDEO_DURACAO * FPS)}
     />
   </>
 );

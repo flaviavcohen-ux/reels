@@ -6,7 +6,7 @@ import { AMARELO_FLAVIA, color, font, ritmo } from "../theme";
 // Reel de lista, sem vídeo: tela cheia em rosé, gancho nas caixas dela e um item por vez.
 // Tempos em segundos do vídeo final. A música entra pelo próprio Instagram.
 
-const ITENS = [
+export const ITENS = [
   "Um sábado sem absolutamente nada marcado",
   "Desmarcarem um compromisso em cima da hora",
   "WhatsApp sem ninguém esperando resposta",
