@@ -42,7 +42,7 @@ const caixa: React.CSSProperties = {
 /** Some devagar no fim do intervalo. */
 const useSai = (to: number) => interpolate(useT(), [to - 0.3, to], [1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
 
-const Caixas: React.FC<{ from: number; to: number; amarela: string; branca: string; size?: number }> = ({ from, to, amarela, branca, size = 62 }) => {
+export const Caixas: React.FC<{ from: number; to: number; amarela: string; branca: string; size?: number }> = ({ from, to, amarela, branca, size = 62 }) => {
   const t = useT();
   const p1 = useEntra(from);
   const p2 = useEntra(from + 0.2);

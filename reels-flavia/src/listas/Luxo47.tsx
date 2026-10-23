@@ -38,7 +38,7 @@ const useSpring = (at: number, damping = 14) => {
   return spring({ frame: Math.round((t - at) * fps), fps, config: { damping, mass: 0.6 } });
 };
 
-const Fundo: React.FC = () => (
+export const Fundo: React.FC = () => (
   <>
     <AbsoluteFill style={{ background: `radial-gradient(ellipse at 50% 40%, ${color.evergreen} 0%, ${color.evergreenDeep} 80%)` }} />
     <AbsoluteFill
@@ -96,15 +96,23 @@ const Gancho: React.FC = () => {
   );
 };
 
-const Item: React.FC<{ n: number; texto: string; at: number }> = ({ n, texto, at }) => {
+export const Item: React.FC<{ n: number; texto: string; at: number; passo?: number; damping?: number; tamanho?: number; quebra?: "balance" | "pretty" }> = ({
+  n,
+  texto,
+  at,
+  passo = PASSO,
+  damping = 14,
+  tamanho = 43,
+  quebra = "balance",
+}) => {
   const t = useT();
-  const entra = useSpring(at);
+  const entra = useSpring(at, damping);
   // Marca-texto amarelo enquanto o item é o da vez; depois some devagar.
-  const marca = interpolate(t, [at + 0.15, at + 0.55, at + PASSO, at + PASSO + 0.35], [0, 1, 1, 0], {
+  const marca = interpolate(t, [at + 0.15, at + 0.55, at + passo, at + passo + 0.35], [0, 1, 1, 0], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
-  const ativo = t >= at && t < at + PASSO;
+  const ativo = t >= at && t < at + passo;
   return (
     <div
       style={{
@@ -120,17 +128,17 @@ const Item: React.FC<{ n: number; texto: string; at: number }> = ({ n, texto, at
           fontFamily: font.title,
           fontStyle: "italic",
           fontWeight: 700,
-          fontSize: 50,
+          fontSize: tamanho * 1.16,
           lineHeight: 1.1,
           color: color.brassLight,
-          width: 74,
+          width: tamanho * 1.72,
           flexShrink: 0,
           textAlign: "right",
         }}
       >
         {String(n).padStart(2, "0")}
       </div>
-      <div style={{ fontFamily: font.body, fontWeight: ativo ? 700 : 600, fontSize: 43, lineHeight: 1.22, color: color.bone, paddingTop: 4, textWrap: "balance" }}>
+      <div style={{ fontFamily: font.body, fontWeight: ativo ? 700 : 600, fontSize: tamanho, lineHeight: 1.2, color: color.bone, paddingTop: 4, textWrap: quebra, whiteSpace: "pre-line" }}>
         <span
           style={{
             backgroundImage: `linear-gradient(${AMARELO_FLAVIA}, ${AMARELO_FLAVIA})`,
