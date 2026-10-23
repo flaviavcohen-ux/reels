@@ -4,24 +4,27 @@ import { AMARELO_FLAVIA, font, ritmo } from "../theme";
 import { ITENS } from "./Luxo47";
 
 // Versão com o vídeo dela em tela cheia: um item por vez numa caixa grande, abaixo do rosto.
-// O vídeo de fundo já vem desacelerado para a duração do Reel (public/reels/luxo-47/fundo.mp4).
+// O vídeo de fundo já vem em 0,7x e emendado com ele mesmo no escuro do fecho (public/reels/luxo-47/fundo.mp4).
 
 const GANCHO = 0.2;
-const PRIMEIRO_ITEM = 2.6;
-const PASSO = 1.5;
+const PRIMEIRO_ITEM = 3.0;
+const PASSO = 2.2;
 const FECHO = PRIMEIRO_ITEM + PASSO * ITENS.length + 0.1;
 const CTA = FECHO + 2.6;
-export const LUXO47_VIDEO_DURACAO = CTA + 3;
+export const LUXO47_VIDEO_DURACAO = CTA + 3.2;
 
 // Altura das caixas: abaixo do rosto e acima da legenda do Instagram.
 const Y_CAIXAS = 1060;
 
 const useT = () => useCurrentFrame() / useVideoConfig().fps;
 
-const usePop = (at: number) => {
+/** Entrada suave (0 → 1), sem passar do ponto. */
+const useEntra = (at: number) => {
   const { fps } = useVideoConfig();
-  return spring({ frame: Math.round((useT() - at) * fps), fps, config: { damping: 14, mass: 0.5 } });
+  return spring({ frame: Math.round((useT() - at) * fps), fps, config: { damping: 200 }, durationInFrames: 14 });
 };
+
+const suave = (p: number): React.CSSProperties => ({ opacity: p, transform: `translateY(${interpolate(p, [0, 1], [18, 0])}px)` });
 
 const caixa: React.CSSProperties = {
   fontFamily: font.body,
@@ -36,27 +39,27 @@ const caixa: React.CSSProperties = {
   boxShadow: "0 10px 30px rgba(0,0,0,0.25)",
 };
 
-/** Some rápido no fim do intervalo, para o próximo entrar limpo. */
-const useSai = (to: number) => interpolate(useT(), [to - 0.12, to], [1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+/** Some devagar no fim do intervalo. */
+const useSai = (to: number) => interpolate(useT(), [to - 0.3, to], [1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
 
 const Caixas: React.FC<{ from: number; to: number; amarela: string; branca: string; size?: number }> = ({ from, to, amarela, branca, size = 62 }) => {
   const t = useT();
-  const p1 = usePop(from);
-  const p2 = usePop(from + 0.15);
+  const p1 = useEntra(from);
+  const p2 = useEntra(from + 0.2);
   const sai = useSai(to);
   if (t < from || t >= to) return null;
   return (
     <div style={{ position: "absolute", top: Y_CAIXAS, left: 0, right: 0, display: "flex", flexDirection: "column", alignItems: "center", opacity: sai }}>
-      <div style={{ ...caixa, fontSize: size, background: AMARELO_FLAVIA, transform: `scale(${p1})` }}>{amarela}</div>
-      <div style={{ ...caixa, fontSize: size, fontWeight: 700, background: "#FFF", marginTop: 12, transform: `scale(${p2})` }}>{branca}</div>
+      <div style={{ ...caixa, fontSize: size, background: AMARELO_FLAVIA, ...suave(p1) }}>{amarela}</div>
+      <div style={{ ...caixa, fontSize: size, fontWeight: 700, background: "#FFF", marginTop: 12, ...suave(p2) }}>{branca}</div>
     </div>
   );
 };
 
 const Item: React.FC<{ n: number; texto: string; at: number }> = ({ n, texto, at }) => {
   const t = useT();
-  const p1 = usePop(at);
-  const p2 = usePop(at + 0.08);
+  const p1 = useEntra(at);
+  const p2 = useEntra(at + 0.12);
   const sai = useSai(at + PASSO);
   if (t < at || t >= at + PASSO) return null;
   return (
@@ -68,12 +71,12 @@ const Item: React.FC<{ n: number; texto: string; at: number }> = ({ n, texto, at
           letterSpacing: 4,
           padding: "10px 24px",
           background: AMARELO_FLAVIA,
-          transform: `scale(${p1})`,
+          ...suave(p1),
         }}
       >
         LUXO Nº {n}
       </div>
-      <div style={{ ...caixa, fontSize: 62, background: "#FFF", marginTop: 12, transform: `scale(${p2})` }}>{texto}</div>
+      <div style={{ ...caixa, fontSize: 62, background: "#FFF", marginTop: 12, ...suave(p2) }}>{texto}</div>
     </div>
   );
 };
@@ -81,8 +84,8 @@ const Item: React.FC<{ n: number; texto: string; at: number }> = ({ n, texto, at
 /** Fecho: escurece o vídeo e a frase dela entra em destaque. */
 const Fecho: React.FC = () => {
   const t = useT();
-  const escuro = interpolate(t, [FECHO, FECHO + 0.4], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-  const p = usePop(FECHO + 0.2);
+  const escuro = interpolate(t, [FECHO - 0.2, FECHO + 0.5], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  const p = useEntra(FECHO + 0.2);
   if (t < FECHO) return null;
   return (
     <>
