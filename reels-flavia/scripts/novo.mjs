@@ -24,7 +24,16 @@ const ff = (...args) => run("ffmpeg", ["-y", "-loglevel", "error", ...args]);
 
 console.log("1/4 Normalizando o vídeo (H.264, 30 fps)...");
 const video = path.join(pub, "video.mp4");
-ff("-i", input, "-vf", "scale='min(1080,iw)':-2", "-r", "30", "-c:v", "libx264", "-preset", "veryfast", "-crf", "18",
+// iPhone grava em HDR (HLG/PQ). Sem converter para SDR, a pele fica pálida e acinzentada no Reel.
+const transfer = execFileSync("ffprobe", ["-v", "error", "-select_streams", "v:0", "-show_entries", "stream=color_transfer", "-of", "csv=p=0", input])
+  .toString()
+  .trim();
+const hdr = ["arib-std-b67", "smpte2084"].includes(transfer);
+const toSdr =
+  "zscale=t=linear:npl=100,format=gbrpf32le,zscale=p=bt709,tonemap=mobius:param=0.3,zscale=t=bt709:m=bt709:r=tv,format=yuv420p," +
+  "eq=saturation=0.86:contrast=1.07:gamma=0.97,colorbalance=gm=0.025:gh=0.015,";
+if (hdr) console.log("   Vídeo em HDR: convertendo as cores para o padrão do Instagram.");
+ff("-i", input, "-vf", `${hdr ? toSdr : ""}scale='min(1080,iw)':-2`, ...(hdr ? ["-colorspace", "bt709", "-color_primaries", "bt709", "-color_trc", "bt709"] : []), "-r", "30", "-c:v", "libx264", "-preset", "veryfast", "-crf", "18",
   "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", video);
 
 const duration = Number(
