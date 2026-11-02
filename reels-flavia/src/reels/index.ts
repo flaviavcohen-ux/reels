@@ -2,6 +2,7 @@ import type { ReelDef } from "../types";
 import { DemoScenes, demoTranscript } from "./demo/Scenes";
 import { Flavia01Scenes } from "./flavia-01/Scenes";
 import { Flavia02Scenes } from "./flavia-02/Scenes";
+import { Flavia03Scenes } from "./flavia-03/Scenes";
 
 // Cada Reel novo entra aqui. Exemplo de Reel real em references/exemplo-reel.md da skill.
 export const reels: ReelDef[] = [
@@ -19,5 +20,12 @@ export const reels: ReelDef[] = [
     tag: "@flaviavcohen",
     velocidade: 1.1,
     faceSegments: [{ from: 0, position: "50% 10%" }], // sentada à mesa, mostrando os produtos
+  },
+  {
+    id: "flavia-03",
+    Scenes: Flavia03Scenes,
+    tag: "@flaviavcohen",
+    velocidade: 1.1,
+    faceSegments: [{ from: 0, position: "50% 34%" }], // sentada à mesa, de blazer branco
   },
 ];
