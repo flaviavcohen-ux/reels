@@ -58,7 +58,7 @@ const SceneFade: React.FC<{ length: number; bare?: boolean; children: React.Reac
               padding: "44px 40px",
               width: 980,
               borderRadius: 40,
-              background: "rgba(251,239,240,0.9)",
+              background: "rgba(251,239,240,0.96)",
               boxShadow: "0 18px 50px rgba(0,0,0,0.25)",
               transform: "scale(0.82)",
             }}

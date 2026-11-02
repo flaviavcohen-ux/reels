@@ -1,6 +1,7 @@
 import React from "react";
-import { Img, staticFile } from "remotion";
+import { Img, interpolateColors, spring, staticFile, useVideoConfig } from "remotion";
 import { Appear } from "../kit/Appear";
+import { useSince } from "../kit/time";
 import { color, font } from "../theme";
 
 /** Foto do produto (recortada do vídeo) num cartão arredondado. */
@@ -173,3 +174,58 @@ export const Frase: React.FC<{ at: number; text: string; size?: number; dim?: bo
     </div>
   </Appear>
 );
+
+/** Silhueta feminina simples. O corpo entra em `corpoAt`; as pernas ganham cor em `pernasAt` ("menos nas pernas"). */
+export const Silhueta: React.FC<{ corpoAt: number; pernasAt: number; height?: number }> = ({ corpoAt, pernasAt, height = 440 }) => {
+  const { fps } = useVideoConfig();
+  const pernas = spring({ frame: useSince(pernasAt), fps, config: { damping: 16 } });
+  const claro = "#EBCFD4";
+  const destaque = interpolateColors(pernas, [0, 1], [claro, "#B65C76"]);
+  return (
+    <Appear at={corpoAt} from="scale">
+      <svg width={(height * 200) / 420} height={height} viewBox="0 0 200 420">
+        <circle cx={100} cy={38} r={26} fill={claro} />
+        <rect x={92} y={60} width={16} height={18} fill={claro} />
+        <path d="M62 82 Q100 72 138 82 L132 150 Q124 180 136 214 L64 214 Q76 180 68 150 Z" fill={claro} />
+        <path d="M62 86 Q48 140 44 206 Q44 214 52 212 Q60 150 72 104 Z" fill={claro} />
+        <path d="M138 86 Q152 140 156 206 Q156 214 148 212 Q140 150 128 104 Z" fill={claro} />
+        <path d="M64 214 L100 214 L98 300 L92 396 L74 396 L70 300 Q62 250 64 214 Z" fill={destaque} />
+        <path d="M100 214 L136 214 Q138 250 130 300 L126 396 L108 396 L102 300 Z" fill={destaque} />
+      </svg>
+    </Appear>
+  );
+};
+
+/** Células de gordura (tecido adiposo), no mesmo estilo chapado dos ingredientes. */
+export const CelulasGordura: React.FC<{ at: number; size?: number }> = ({ at, size = 190 }) => {
+  const cells = [
+    [0, 0, 34], [-58, -22, 28], [56, -26, 30], [-34, 46, 30], [36, 48, 32], [-70, 36, 20], [72, 30, 22], [4, -62, 24],
+  ];
+  const c = size / 2;
+  const k = size / 190;
+  return (
+    <Appear at={at} from="scale">
+      <div
+        style={{
+          width: size + 40,
+          height: size + 40,
+          borderRadius: "50%",
+          background: color.surface,
+          boxShadow: `0 20px 40px ${color.glow}`,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <svg width={size} height={size}>
+          {cells.map(([x, y, r], i) => (
+            <g key={i}>
+              <circle cx={c + x * k} cy={c + y * k} r={r * k} fill="#F7E3A8" stroke="#D9A3AF" strokeWidth={3} />
+              <circle cx={c + (x + r * 0.55) * k} cy={c + (y + r * 0.45) * k} r={4 * k} fill="#B65C76" />
+            </g>
+          ))}
+        </svg>
+      </div>
+    </Appear>
+  );
+};

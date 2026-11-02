@@ -1,6 +1,6 @@
 import React from "react";
 import { CaixasGancho } from "../../flavia/CaixasGancho";
-import { Frase } from "../../flavia/kit";
+import { CelulasGordura, Frase, Silhueta } from "../../flavia/kit";
 import { Card, Headline, Scene } from "../../kit";
 
 // Gordura ou lipedema? Tempos = segundos da fala já cortada (sem silêncio no começo/fim e com pausas encurtadas).
@@ -17,6 +17,10 @@ export const Flavia03Scenes: React.FC = () => (
     <Scene from={0.0} to={6.8} bare>
       <CaixasGancho from={0.1} to={6.8} amarela="Gordura ou lipedema?" branca="Emagreço no corpo todo, menos nas pernas" y={300} />
     </Scene>
+    {/* "emagreço no corpo inteiro, menos nas pernas": silhueta com as pernas destacadas (sem mostrar sinais) */}
+    <Scene from={3.9} to={6.8}>
+      <Silhueta corpoAt={3.94} pernasAt={5.48} height={600} />
+    </Scene>
 
     {/* 2 · "uma das coisas que podem entrar na investigação é o lipedema" */}
     <Scene from={6.8} to={10.98}>
@@ -31,7 +35,10 @@ export const Flavia03Scenes: React.FC = () => (
     <Scene from={10.98} to={19.54}>
       <Headline at={11.0} text="Não é simplesmente *gordura localizada*" size={80} />
       <Gap h={44} />
-      <Card at={14.08} label="É uma" value="Doença crônica do tecido adiposo" width={820} valueSize={46} />
+      <Row gap={24}>
+        <CelulasGordura at={14.08} size={150} />
+        <Card at={14.33} label="É uma" value="Doença crônica do tecido adiposo" width={620} valueSize={44} />
+      </Row>
       <Gap h={40} />
       <Frase at={16.7} text="Acontece predominantemente em mulheres" size={44} />
     </Scene>
