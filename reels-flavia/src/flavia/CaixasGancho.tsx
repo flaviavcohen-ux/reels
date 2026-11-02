@@ -1,6 +1,7 @@
 import React from "react";
 import { spring, useVideoConfig } from "remotion";
 import { useSeconds } from "../kit/time";
+import { useStageArea } from "../layout/area";
 import { AMARELO_FLAVIA, font } from "../theme";
 
 type Props = { from: number; to: number; amarela: string; branca?: string; y?: number };
@@ -9,6 +10,7 @@ type Props = { from: number; to: number; amarela: string; branca?: string; y?: n
 export const CaixasGancho: React.FC<Props> = ({ from, to, amarela, branca, y = 900 }) => {
   // Segundo global da fala (funciona dentro ou fora de uma Scene).
   const t = useSeconds();
+  const area = useStageArea();
   const { fps } = useVideoConfig();
   if (t < from || t >= to) return null;
   const p1 = spring({ frame: Math.round((t - from) * fps), fps, config: { damping: 14, mass: 0.5 } });
@@ -26,7 +28,7 @@ export const CaixasGancho: React.FC<Props> = ({ from, to, amarela, branca, y = 9
     boxShadow: "0 8px 24px rgba(0,0,0,0.18)",
   };
   return (
-    <div style={{ position: "absolute", top: y, left: 0, right: 0, display: "flex", flexDirection: "column", alignItems: "center" }}>
+    <div style={{ position: "absolute", top: y - area.top, left: 0, right: 0, display: "flex", flexDirection: "column", alignItems: "center" }}>
       <div style={{ ...box, background: AMARELO_FLAVIA, transform: `scale(${p1})` }}>{amarela}</div>
       {branca && <div style={{ ...box, background: "#FFFFFF", fontWeight: 700, marginTop: 10, transform: `scale(${p2})` }}>{branca}</div>}
     </div>

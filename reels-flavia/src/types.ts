@@ -21,6 +21,8 @@ export type ReelDef = {
   velocidade?: number;
   /** Pasta da gravação em public/reels, quando difere do id. */
   media?: string;
+  /** Layout: "dividida" (padrão), "cheia" (vídeo na tela toda) ou "moldura" (vídeo numa janela). */
+  layout?: "dividida" | "cheia" | "moldura";
   /** Só para teste: transcrição embutida e sem gravação. */
   demo?: { transcript: Transcript };
 };

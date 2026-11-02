@@ -14,7 +14,7 @@ const Row: React.FC<{ children: React.ReactNode; gap?: number }> = ({ children, 
 export const Flavia03Scenes: React.FC = () => (
   <>
     {/* 1 · Gancho */}
-    <Scene from={0.0} to={6.8}>
+    <Scene from={0.0} to={6.8} bare>
       <CaixasGancho from={0.1} to={6.8} amarela="Gordura ou lipedema?" branca="Emagreço no corpo todo, menos nas pernas" y={300} />
     </Scene>
 
@@ -70,7 +70,7 @@ export const Flavia03Scenes: React.FC = () => (
     </Scene>
 
     {/* 8 · CTA de compartilhamento */}
-    <Scene from={37.46} to={42.61}>
+    <Scene from={37.46} to={42.61} bare>
       <CaixasGancho from={37.5} to={42.61} amarela="Conhece alguém que emagrece, mas a perna não muda?" branca="Manda esse vídeo pra ela" y={300} />
     </Scene>
   </>

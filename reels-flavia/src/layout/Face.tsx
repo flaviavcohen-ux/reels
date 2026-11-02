@@ -1,15 +1,34 @@
 import React from "react";
 import { AbsoluteFill, OffthreadVideo, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
 import { color, font, HEIGHT, ritmo, STAGE_HEIGHT } from "../theme";
+import type { LayoutVariant } from "./area";
 
-type Props = { src?: string; position?: string; segments?: { from: number; position: string }[] };
+type Props = { src?: string; position?: string; segments?: { from: number; position: string }[]; variant?: LayoutVariant };
 
-/** Metade de baixo: a sua gravação (com o áudio). */
-export const Face: React.FC<Props> = ({ src, position = "50% 30%", segments = [] }) => {
+/** Topo da janela do vídeo no layout "moldura". */
+export const MOLDURA_TOP = 990;
+
+const box = (variant: LayoutVariant): React.CSSProperties => {
+  if (variant === "cheia") return { top: 0, height: HEIGHT };
+  if (variant === "moldura")
+    return {
+      top: MOLDURA_TOP,
+      left: 60,
+      width: 960,
+      height: HEIGHT - MOLDURA_TOP - 80,
+      borderRadius: 44,
+      border: "6px solid #FFFFFF",
+      boxShadow: "0 18px 50px rgba(46,34,38,0.25)",
+    };
+  return { top: STAGE_HEIGHT, height: HEIGHT - STAGE_HEIGHT };
+};
+
+/** A gravação (com o áudio): metade de baixo, tela cheia ou numa janela, conforme o layout. */
+export const Face: React.FC<Props> = ({ src, position = "50% 30%", segments = [], variant = "dividida" }) => {
   const t = (useCurrentFrame() / useVideoConfig().fps) * ritmo.velocidade;
-  const current = [...segments].reverse().find((s) => t >= s.from)?.position ?? position;
+  const current = variant === "cheia" ? "50% 50%" : [...segments].reverse().find((s) => t >= s.from)?.position ?? position;
   return (
-    <AbsoluteFill style={{ top: STAGE_HEIGHT, height: HEIGHT - STAGE_HEIGHT, overflow: "hidden", background: color.ink }}>
+    <AbsoluteFill style={{ ...box(variant), overflow: "hidden", background: color.ink }}>
       {src ? (
         <OffthreadVideo src={staticFile(src)} playbackRate={ritmo.velocidade} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: current }} />
       ) : (
@@ -19,7 +38,7 @@ export const Face: React.FC<Props> = ({ src, position = "50% 30%", segments = []
           </div>
         </AbsoluteFill>
       )}
-      <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 4, background: color.brass }} />
+      {variant === "dividida" && <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 4, background: color.brass }} />}
     </AbsoluteFill>
   );
 };

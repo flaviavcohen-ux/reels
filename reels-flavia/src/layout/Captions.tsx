@@ -35,7 +35,7 @@ const clean = (w: string) => {
 };
 
 /** Legenda palavra por palavra na divisa entre animação e rosto. A palavra falada acende em dourado. */
-export const Captions: React.FC<{ words: Word[] }> = ({ words }) => {
+export const Captions: React.FC<{ words: Word[]; top?: number }> = ({ words, top = STAGE_HEIGHT - 62 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const t = (frame / fps) * ritmo.velocidade;
@@ -49,7 +49,7 @@ export const Captions: React.FC<{ words: Word[] }> = ({ words }) => {
     <div
       style={{
         position: "absolute",
-        top: STAGE_HEIGHT - 62,
+        top,
         left: 40,
         right: 40,
         display: "flex",

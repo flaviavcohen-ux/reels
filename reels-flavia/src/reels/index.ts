@@ -28,4 +28,15 @@ export const reels: ReelDef[] = [
     velocidade: 1.1,
     faceSegments: [{ from: 0, position: "50% 34%" }], // sentada à mesa, de blazer branco
   },
+  // Testes de layout com o mesmo vídeo (comparação para a Flávia).
+  { id: "flavia-03-cheia", media: "flavia-03", layout: "cheia", Scenes: Flavia03Scenes, tag: "@flaviavcohen", velocidade: 1.1 },
+  {
+    id: "flavia-03-moldura",
+    media: "flavia-03",
+    layout: "moldura",
+    Scenes: Flavia03Scenes,
+    tag: "@flaviavcohen",
+    velocidade: 1.1,
+    faceSegments: [{ from: 0, position: "50% 34%" }],
+  },
 ];
