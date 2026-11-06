@@ -2,6 +2,8 @@ import React from "react";
 import { Img, interpolateColors, spring, staticFile, useVideoConfig } from "remotion";
 import { Appear } from "../kit/Appear";
 import { useSince } from "../kit/time";
+import { useStageArea } from "../layout/area";
+import { CHEIA_TOP } from "../layout/Stage";
 import { color, font } from "../theme";
 
 /** Foto do produto (recortada do vídeo) num cartão arredondado. */
@@ -314,3 +316,38 @@ export const Icone: React.FC<{ at: number; id: IconeId; size?: number }> = ({ at
     </div>
   </Appear>
 );
+
+/** Ilustração estilizada de pernas (lipedema): contorno das pernas de short; as regiões de volume ganham cor em `destaqueAt`. */
+export const PernasLipedema: React.FC<{ at: number; destaqueAt: number; height?: number }> = ({ at, destaqueAt, height = 380 }) => {
+  const { fps } = useVideoConfig();
+  const d = spring({ frame: useSince(destaqueAt), fps, config: { damping: 16 } });
+  const claro = "#F0D9DD";
+  const contorno = "#D9A3AF";
+  const regiao = "#C9798F";
+  return (
+    <Appear at={at} from="scale">
+      <svg width={(height * 300) / 420} height={height} viewBox="0 0 300 420">
+        <defs>
+          <clipPath id="pernas">
+            <path d="M90 20 C60 50 52 75 55 95 C45 130 48 160 52 185 C56 215 62 228 60 245 C56 270 58 300 66 330 C72 350 78 358 88 366 L90 378 C84 388 78 394 80 404 L116 404 C118 394 114 386 110 378 L112 366 C124 356 134 340 138 312 C142 285 140 262 144 245 C148 228 150 205 150 170 L150 130 L150 170 C150 205 152 228 156 245 C160 262 158 285 162 312 C166 340 176 356 188 366 L190 378 C186 386 182 394 184 404 L220 404 C222 394 216 388 210 378 L212 366 C222 358 228 350 234 330 C242 300 244 270 240 245 C238 228 244 215 248 185 C252 160 255 130 245 95 C248 75 240 50 210 20 Z" />
+          </clipPath>
+        </defs>
+        {/* Pernas (uma forma só, simétrica) */}
+        <path d="M90 20 C60 50 52 75 55 95 C45 130 48 160 52 185 C56 215 62 228 60 245 C56 270 58 300 66 330 C72 350 78 358 88 366 L90 378 C84 388 78 394 80 404 L116 404 C118 394 114 386 110 378 L112 366 C124 356 134 340 138 312 C142 285 140 262 144 245 C148 228 150 205 150 170 L150 130 L150 170 C150 205 152 228 156 245 C160 262 158 285 162 312 C166 340 176 356 188 366 L190 378 C186 386 182 394 184 404 L220 404 C222 394 216 388 210 378 L212 366 C222 358 228 350 234 330 C242 300 244 270 240 245 C238 228 244 215 248 185 C252 160 255 130 245 95 C248 75 240 50 210 20 Z" fill={claro} />
+        {/* Volume das coxas até acima do tornozelo ganha cor; tornozelos e pés ficam claros */}
+        <rect x={0} y={100} width={300} height={264} fill={regiao} opacity={0.6 * d} clipPath="url(#pernas)" />
+        <path d="M90 20 C60 50 52 75 55 95 C45 130 48 160 52 185 C56 215 62 228 60 245 C56 270 58 300 66 330 C72 350 78 358 88 366 L90 378 C84 388 78 394 80 404 L116 404 C118 394 114 386 110 378 L112 366 C124 356 134 340 138 312 C142 285 140 262 144 245 C148 228 150 205 150 170 L150 130 L150 170 C150 205 152 228 156 245 C160 262 158 285 162 312 C166 340 176 356 188 366 L190 378 C186 386 182 394 184 404 L220 404 C222 394 216 388 210 378 L212 366 C222 358 228 350 234 330 C242 300 244 270 240 245 C238 228 244 215 248 185 C252 160 255 130 245 95 C248 75 240 50 210 20 Z" fill="none" stroke={contorno} strokeWidth={3} />
+        {/* Short */}
+        <path d="M90 20 H210 C238 48 248 80 246 108 H156 L150 124 L144 108 H54 C52 80 62 48 90 20 Z" fill="#B65C76" />
+      </svg>
+    </Appear>
+  );
+};
+
+/** Peça solta num ponto fixo da tela (ex.: ilustração na parede ao lado do rosto, no layout de tela cheia).
+ * Use dentro de uma <Scene bare>: dentro do cartão a posição seria relativa ao cartão. `y` e `x` são da tela inteira. */
+export const Flutuante: React.FC<{ y?: number; x?: number; width?: number; children: React.ReactNode }> = ({ y = 250, x = 40, width = 360, children }) => {
+  const area = useStageArea();
+  const topoDaArea = area.variant === "cheia" ? CHEIA_TOP : 0;
+  return <div style={{ position: "absolute", top: y - topoDaArea, left: x, width, display: "flex", justifyContent: "center" }}>{children}</div>;
+};

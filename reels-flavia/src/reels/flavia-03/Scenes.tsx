@@ -1,6 +1,6 @@
 import React from "react";
 import { CaixasGancho } from "../../flavia/CaixasGancho";
-import { CelulasGordura, Frase, Icone, Silhueta } from "../../flavia/kit";
+import { CelulasGordura, Flutuante, Frase, Icone, PernasLipedema, Silhueta } from "../../flavia/kit";
 import { Card, Headline, Scene } from "../../kit";
 
 // Gordura ou lipedema? Tempos = segundos da fala já cortada (sem silêncio no começo/fim e com pausas encurtadas).
@@ -31,33 +31,44 @@ export const Flavia03Scenes: React.FC = () => (
       <Frase at={10.3} text="Por quê?" size={56} />
     </Scene>
 
+    {/* Na tela cheia, as ilustrações ficam na parede ao lado do rosto (cenas "bare") e o texto no cartão de baixo. */}
+
     {/* 3 · não é gordura localizada: doença crônica do tecido adiposo */}
     <Scene from={10.98} to={16.7}>
       <Headline at={11.0} text="Não é simplesmente *gordura localizada*" size={80} />
-      <Gap h={44} />
-      <Row gap={24}>
-        <CelulasGordura at={14.08} size={150} />
-        <Card at={14.33} label="É uma" value="Doença crônica do tecido adiposo" width={620} valueSize={44} />
-      </Row>
+      <Gap h={40} />
+      <Card at={14.08} label="É uma" value="Doença crônica do tecido adiposo" width={820} valueSize={46} />
+    </Scene>
+    <Scene from={14.0} to={16.7} bare>
+      <Flutuante>
+        <CelulasGordura at={14.08} size={250} />
+      </Flutuante>
     </Scene>
 
     {/* 3b · predominantemente em mulheres */}
     <Scene from={16.7} to={19.54}>
-      <Icone at={16.75} id="mulheres" size={240} />
-      <Gap h={30} />
-      <Frase at={16.9} text="Acontece predominantemente em mulheres" size={52} />
+      <Frase at={16.75} text="Acontece predominantemente em mulheres" size={56} />
+    </Scene>
+    <Scene from={16.7} to={19.54} bare>
+      <Flutuante>
+        <Icone at={16.75} id="mulheres" size={260} />
+      </Flutuante>
     </Scene>
 
-    {/* 4 · sinais avaliados em consulta */}
+    {/* 4 · sinais avaliados em consulta: ilustração estilizada (não é foto de paciente) + aviso de que só a avaliação confirma */}
     <Scene from={19.54} to={23.36}>
-      <Headline at={19.6} text="Alguns sinais *chamam atenção*" size={88} />
-      <Gap h={40} />
-      <Row gap={30}>
-        <Icone at={21.6} id="estetoscopio" size={190} />
-        <div style={{ alignSelf: "center" }}>
-          <Frase at={21.7} text="e a gente avalia em consulta" size={50} />
+      <Headline at={19.6} text="Alguns sinais *chamam atenção*" size={84} />
+      <Gap h={30} />
+      <Frase at={21.7} text="e a gente avalia em consulta" size={50} />
+      <Gap h={14} />
+      <Frase at={22.1} text="só a avaliação médica confirma" size={40} dim />
+    </Scene>
+    <Scene from={19.54} to={23.36} bare>
+      <Flutuante y={230}>
+        <div style={{ background: "rgba(255,255,255,0.88)", borderRadius: 36, padding: 20, boxShadow: "0 18px 40px rgba(0,0,0,0.18)" }}>
+          <PernasLipedema at={19.6} destaqueAt={20.6} height={440} />
         </div>
-      </Row>
+      </Flutuante>
     </Scene>
 
     {/* 5 · perna grossa ou celulite ≠ lipedema */}
@@ -74,23 +85,26 @@ export const Flavia03Scenes: React.FC = () => (
 
     {/* 6 · diagnóstico clínico */}
     <Scene from={27.89} to={31.19}>
-      <Icone at={27.9} id="prancheta" size={190} />
-      <Gap h={24} />
       <Headline at={28.0} text="O diagnóstico é *clínico*" size={92} />
       <Gap h={40} />
       <Frase at={29.07} text="e precisa ser feito adequadamente" size={48} />
     </Scene>
+    <Scene from={27.89} to={31.19} bare>
+      <Flutuante>
+        <Icone at={27.9} id="prancheta" size={250} />
+      </Flutuante>
+    </Scene>
 
     {/* 7 · mulheres se culpando por anos */}
     <Scene from={31.19} to={37.46}>
-      <Row gap={30}>
-        <Icone at={32.94} id="calendario" size={180} />
-        <div style={{ alignSelf: "center", maxWidth: 560 }}>
-          <Frase at={31.3} text="Vejo mulheres se culpando durante anos…" size={50} />
-        </div>
-      </Row>
+      <Frase at={31.3} text="Vejo mulheres se culpando durante anos…" size={50} />
       <Gap h={40} />
       <Headline at={33.78} text="por algo que pode ter uma *explicação médica*" size={80} />
+    </Scene>
+    <Scene from={32.9} to={37.46} bare>
+      <Flutuante>
+        <Icone at={32.94} id="calendario" size={240} />
+      </Flutuante>
     </Scene>
 
     {/* 8 · CTA de compartilhamento */}
