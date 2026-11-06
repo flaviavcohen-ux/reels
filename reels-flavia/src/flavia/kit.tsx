@@ -229,3 +229,88 @@ export const CelulasGordura: React.FC<{ at: number; size?: number }> = ({ at, si
     </Appear>
   );
 };
+
+export type IconeId = "estetoscopio" | "mulheres" | "prancheta" | "calendario";
+
+const DesenhoIcone: React.FC<{ id: IconeId; size: number }> = ({ id, size }) => {
+  const vinho = "#B65C76";
+  const rose = "#C9798F";
+  const claro = "#EBCFD4";
+  if (id === "estetoscopio") {
+    return (
+      <svg width={size} height={size} viewBox="0 0 200 200">
+        <path d="M60 30 V80 Q60 120 100 120 Q140 120 140 80 V30" fill="none" stroke={vinho} strokeWidth={10} strokeLinecap="round" />
+        <circle cx={60} cy={28} r={9} fill={rose} />
+        <circle cx={140} cy={28} r={9} fill={rose} />
+        <path d="M100 120 V140 Q100 170 130 170 Q150 170 150 150 V140" fill="none" stroke={vinho} strokeWidth={10} strokeLinecap="round" />
+        <circle cx={150} cy={130} r={22} fill={rose} />
+        <circle cx={150} cy={130} r={11} fill={claro} />
+      </svg>
+    );
+  }
+  if (id === "mulheres") {
+    const fig = (x: number, cor: string, s: number) => (
+      <g transform={`translate(${x} ${200 - 170 * s}) scale(${s})`}>
+        <circle cx={0} cy={30} r={22} fill={cor} />
+        <path d="M0 58 L-38 150 H38 Z" fill={cor} />
+        <rect x={-18} y={150} width={12} height={20} rx={4} fill={cor} />
+        <rect x={6} y={150} width={12} height={20} rx={4} fill={cor} />
+      </g>
+    );
+    return (
+      <svg width={size} height={size} viewBox="0 0 200 200">
+        {fig(48, claro, 0.8)}
+        {fig(152, rose, 0.8)}
+        {fig(100, vinho, 0.95)}
+      </svg>
+    );
+  }
+  if (id === "prancheta") {
+    return (
+      <svg width={size} height={size} viewBox="0 0 200 200">
+        <rect x={45} y={30} width={110} height={150} rx={12} fill={rose} />
+        <rect x={58} y={48} width={84} height={120} rx={6} fill="#FFFFFF" />
+        <rect x={75} y={22} width={50} height={22} rx={8} fill={vinho} />
+        {[72, 92, 112].map((y) => (
+          <rect key={y} x={70} y={y} width={60} height={7} rx={3} fill={claro} />
+        ))}
+        <path d="M78 140 L94 154 L124 126" fill="none" stroke={vinho} strokeWidth={10} strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    );
+  }
+  // Calendário
+  return (
+    <svg width={size} height={size} viewBox="0 0 200 200">
+      <rect x={30} y={40} width={140} height={130} rx={14} fill="#FFFFFF" stroke={claro} strokeWidth={4} />
+      <rect x={30} y={40} width={140} height={34} rx={14} fill={vinho} />
+      <rect x={30} y={60} width={140} height={14} fill={vinho} />
+      <rect x={62} y={28} width={10} height={26} rx={5} fill={rose} />
+      <rect x={128} y={28} width={10} height={26} rx={5} fill={rose} />
+      {[0, 1, 2, 3].map((r) =>
+        [0, 1, 2, 3, 4].map((c) => (
+          <rect key={`${r}-${c}`} x={44 + c * 24} y={86 + r * 20} width={16} height={12} rx={3} fill={(r * 5 + c) % 3 === 0 ? rose : claro} />
+        )),
+      )}
+    </svg>
+  );
+};
+
+/** Ícone ilustrado num círculo, no estilo dos ingredientes. Ilustra o que ela fala (nunca sinais ou sintomas que ela não citou). */
+export const Icone: React.FC<{ at: number; id: IconeId; size?: number }> = ({ at, id, size = 150 }) => (
+  <Appear at={at} from="scale">
+    <div
+      style={{
+        width: size + 40,
+        height: size + 40,
+        borderRadius: "50%",
+        background: color.surface,
+        boxShadow: `0 20px 40px ${color.glow}`,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <DesenhoIcone id={id} size={size} />
+    </div>
+  </Appear>
+);
