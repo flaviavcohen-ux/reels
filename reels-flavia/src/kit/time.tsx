@@ -60,7 +60,7 @@ const SceneFade: React.FC<{ length: number; bare?: boolean; children: React.Reac
               borderRadius: 40,
               background: "rgba(251,239,240,0.96)",
               boxShadow: "0 18px 50px rgba(0,0,0,0.25)",
-              transform: "scale(0.82)",
+              transform: "scale(0.76)",
             }}
           >
             {children}

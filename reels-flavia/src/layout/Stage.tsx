@@ -1,11 +1,12 @@
 import React from "react";
 import { AbsoluteFill } from "remotion";
 import { color, font, HEIGHT, STAGE_HEIGHT } from "../theme";
+
 import { LayoutVariant, StageArea } from "./area";
 
-/** Tela cheia: as cenas ficam num cartão sobre o vídeo, nesta faixa de baixo. */
-export const CHEIA_TOP = 1150;
-const CHEIA_HEIGHT = HEIGHT - CHEIA_TOP - 90;
+/** Tela cheia: as cenas ficam num cartão sobre o vídeo, nesta faixa de baixo (acima da área da legenda do Instagram). */
+export const CHEIA_TOP = 1090;
+const CHEIA_HEIGHT = 480;
 
 const Fundo: React.FC = () => (
   <>

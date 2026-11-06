@@ -26,7 +26,7 @@ export const Reel: React.FC<{ def: ReelDef; transcript: Transcript }> = ({ def, 
       {/* Na tela cheia o vídeo fica atrás das cenas; nos outros, o fundo rosé fica atrás do vídeo. */}
       {variant === "cheia" ? face : stage}
       {variant === "cheia" ? stage : face}
-      <Captions words={transcript.words} top={variant === "cheia" ? 1010 : variant === "moldura" ? MOLDURA_TOP - 74 : undefined} />
+      <Captions words={transcript.words} top={variant === "cheia" ? 960 : variant === "moldura" ? MOLDURA_TOP - 74 : undefined} />
     </AbsoluteFill>
   );
 };
