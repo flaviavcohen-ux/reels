@@ -72,7 +72,7 @@ export const Flavia04Scenes: React.FC = () => (
     <Scene from={32.96} to={38.43}>
       <Frase at={33.0} text="Se você tem mais de 40…" size={52} dim />
       <Gap h={30} />
-      <Headline at={35.45} text="olhe pra musculação *dessa forma*" size={84} />
+      <Headline at={34.0} text="olhe pra musculação *dessa forma*" size={84} />
     </Scene>
 
     {/* 8 · fechamento nas caixas */}
