@@ -33,32 +33,30 @@ export const Flavia06Scenes: React.FC = () => (
     </Scene>
 
     {/* 3 · bioimpedância: além do peso */}
-    <Scene from={8.11} to={13.67}>
-      <Headline at={8.28} text="*Bioimpedância*" size={96} />
-      <Gap h={16} />
-      <Frase at={9.2} text="um exame que vai além do peso" size={46} />
-      <Gap h={30} />
-      {/* Recorte da bioimpedância da própria Flávia (sem nome, ID nem idade) */}
-      <ImagemCard at={10.4} src="reels/flavia-06/inbody.png" width={880} etiqueta="Minha bioimpedância" />
+    <Scene from={8.11} to={11.75}>
+      <Headline at={8.28} text="*Bioimpedância*" size={104} />
+      <Gap h={24} />
+      <Frase at={9.2} text="um exame que vai além do peso" size={50} />
     </Scene>
 
-    {/* 4 · quanto do peso é gordura, músculo e água */}
-    <Scene from={13.67} to={18.12}>
-      <Frase at={13.7} text="Quanto do seu peso é…" size={48} dim />
-      <Gap h={30} />
-      <Sintomas
-        itens={[
-          { id: "gordura", nome: "Gordura", at: 14.56 },
-          { id: "musculo", nome: "Massa muscular", at: 16.1 },
-          { id: "gota", nome: "Água", at: 17.86 },
+    {/* 4 · composição corporal no exame dela: cada linha acende quando ela fala (sem nome, ID nem idade no recorte) */}
+    <Scene from={11.75} to={19.3}>
+      <ImagemCard
+        at={11.85}
+        src="reels/flavia-06/inbody-full.png"
+        width={920}
+        etiqueta="Minha bioimpedância"
+        destaques={[
+          { at: 14.46, y0: 0.89, y1: 0.989 },
+          { at: 16.0, y0: 0.79, y1: 0.892 },
+          { at: 17.76, y0: 0.08, y1: 0.157 },
         ]}
-        size={160}
       />
     </Scene>
 
     {/* 5 · saudável x te deixa mais fraca, mais lenta, metabolismo devagar */}
-    <Scene from={18.12} to={26.82}>
-      <Frase at={18.2} text="É o que separa um emagrecimento saudável…" size={46} />
+    <Scene from={19.3} to={26.82}>
+      <Frase at={19.35} text="É o que separa um emagrecimento saudável…" size={46} />
       <Gap h={20} />
       <Frase at={21.51} text="…de um que vai te deixar" size={44} dim />
       <Gap h={36} />

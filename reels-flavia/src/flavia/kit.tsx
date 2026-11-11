@@ -1,10 +1,10 @@
 import React from "react";
 import { Img, interpolateColors, spring, staticFile, useVideoConfig } from "remotion";
 import { Appear } from "../kit/Appear";
-import { useSince } from "../kit/time";
+import { useSeconds, useSince } from "../kit/time";
 import { useStageArea } from "../layout/area";
 import { CHEIA_TOP } from "../layout/Stage";
-import { color, font } from "../theme";
+import { AMARELO_FLAVIA, color, font } from "../theme";
 
 /** Foto do produto (recortada do vídeo) num cartão arredondado. */
 export const ProdutoCard: React.FC<{ at: number; src: string; nome: string; marca: string }> = ({ at, src, nome, marca }) => (
@@ -477,8 +477,46 @@ export const Sintomas: React.FC<{ itens: { id: IconeId; nome: string; at: number
   </div>
 );
 
-/** Imagem (ex.: recorte de exame) num cartão branco, com uma etiqueta pequena em cima. */
-export const ImagemCard: React.FC<{ at: number; src: string; width?: number; etiqueta?: string }> = ({ at, src, width = 900, etiqueta }) => (
+/** Faixa que acende uma linha da imagem no segundo em que ela fala daquilo. `y0`/`y1` em fração da altura da imagem (0–1). */
+export type Destaque = { at: number; y0: number; y1: number };
+
+const Destaques: React.FC<{ itens: Destaque[] }> = ({ itens }) => {
+  const t = useSeconds();
+  const ativo = [...itens].reverse().find((d) => t >= d.at);
+  return (
+    <>
+      {itens.map((d, i) => {
+        if (t < d.at) return null;
+        const on = d === ativo;
+        return (
+          <div
+            key={i}
+            style={{
+              position: "absolute",
+              left: -6,
+              right: -6,
+              top: `${d.y0 * 100}%`,
+              height: `${(d.y1 - d.y0) * 100}%`,
+              borderRadius: 8,
+              background: on ? "rgba(255,225,74,0.38)" : "rgba(255,225,74,0.12)",
+              border: on ? `4px solid ${AMARELO_FLAVIA}` : "2px solid rgba(255,225,74,0.5)",
+              boxShadow: on ? "0 6px 18px rgba(0,0,0,0.12)" : "none",
+            }}
+          />
+        );
+      })}
+    </>
+  );
+};
+
+/** Imagem (ex.: recorte de exame) num cartão branco, com uma etiqueta pequena em cima e linhas que acendem (`destaques`). */
+export const ImagemCard: React.FC<{ at: number; src: string; width?: number; etiqueta?: string; destaques?: Destaque[] }> = ({
+  at,
+  src,
+  width = 900,
+  etiqueta,
+  destaques = [],
+}) => (
   <Appear at={at} from="scale">
     <div
       style={{
@@ -496,7 +534,10 @@ export const ImagemCard: React.FC<{ at: number; src: string; width?: number; eti
           {etiqueta.toUpperCase()}
         </div>
       )}
-      <Img src={staticFile(src)} style={{ width, display: "block" }} />
+      <div style={{ position: "relative", width }}>
+        <Img src={staticFile(src)} style={{ width, display: "block" }} />
+        <Destaques itens={destaques} />
+      </div>
     </div>
   </Appear>
 );
