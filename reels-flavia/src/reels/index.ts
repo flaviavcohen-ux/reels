@@ -49,4 +49,14 @@ export const reels: ReelDef[] = [
     velocidade: 1.1,
     faceSegments: [{ from: 0, position: "50% 20%" }], // sentada à mesa, blazer cinza
   },
+  // Teste de paleta nude com o mesmo vídeo
+  {
+    id: "flavia-05-nude",
+    media: "flavia-05",
+    paleta: "nude",
+    Scenes: Flavia05Scenes,
+    tag: "@flaviavcohen",
+    velocidade: 1.1,
+    faceSegments: [{ from: 0, position: "50% 20%" }],
+  },
 ];

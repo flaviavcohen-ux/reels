@@ -2,7 +2,7 @@ import React from "react";
 import { Composition, staticFile } from "remotion";
 import { Reel } from "./layout/Reel";
 import { reels } from "./reels";
-import { FPS, HEIGHT, ritmo, WIDTH } from "./theme";
+import { color, FPS, HEIGHT, PALETAS, ritmo, WIDTH } from "./theme";
 import type { Transcript } from "./types";
 
 type Props = { reelId: string; transcript: Transcript };
@@ -11,6 +11,7 @@ const ReelById: React.FC<Props> = ({ reelId, transcript }) => {
   const def = reels.find((r) => r.id === reelId);
   if (!def) return null;
   ritmo.velocidade = def.velocidade ?? 1;
+  Object.assign(color, PALETAS[def.paleta ?? "rose"]);
   return <Reel def={def} transcript={transcript} />;
 };
 

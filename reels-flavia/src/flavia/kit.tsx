@@ -235,9 +235,10 @@ export const CelulasGordura: React.FC<{ at: number; size?: number }> = ({ at, si
 export type IconeId = "estetoscopio" | "mulheres" | "prancheta" | "calendario" | "humor" | "sono" | "calorao" | "libido" | "enxaqueca" | "concentracao";
 
 const DesenhoIcone: React.FC<{ id: IconeId; size: number }> = ({ id, size }) => {
-  const vinho = "#B65C76";
-  const rose = "#C9798F";
-  const claro = "#EBCFD4";
+  // Cores da paleta ativa (rosé ou nude)
+  const vinho = color.brassLight;
+  const rose = color.brass;
+  const claro = color.evergreenDeep;
   if (id === "estetoscopio") {
     return (
       <svg width={size} height={size} viewBox="0 0 200 200">

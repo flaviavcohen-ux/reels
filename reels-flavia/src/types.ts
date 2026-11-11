@@ -23,6 +23,8 @@ export type ReelDef = {
   media?: string;
   /** Layout: "dividida" (padrão), "cheia" (vídeo na tela toda) ou "moldura" (vídeo numa janela). */
   layout?: "dividida" | "cheia" | "moldura";
+  /** Paleta do fundo das animações: "rose" (padrão) ou "nude". */
+  paleta?: "rose" | "nude";
   /** Só para teste: transcrição embutida e sem gravação. */
   demo?: { transcript: Transcript };
 };

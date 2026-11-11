@@ -48,3 +48,22 @@ export const WIDTH = 1080;
 export const HEIGHT = 1920;
 // Metade de cima = animação. Metade de baixo = vídeo.
 export const STAGE_HEIGHT = 960;
+
+/** Paletas do fundo das animações. A ativa é aplicada por Reel (campo `paleta` em src/reels/index.ts). */
+const ROSE = { ...color };
+export const PALETAS = {
+  rose: ROSE,
+  nude: {
+    ...ROSE,
+    evergreen: "#F7F0EA",
+    evergreenDeep: "#E9DCD0",
+    bone: "#3B2F2A",
+    brass: "#CDAE96",
+    brassLight: "#9C6B4E",
+    line: "rgba(59,47,42,0.10)",
+    grid: "rgba(156,107,78,0.07)",
+    textDim: "rgba(59,47,42,0.55)",
+    glow: "rgba(156,107,78,0.18)",
+  },
+};
+export type Paleta = keyof typeof PALETAS;
