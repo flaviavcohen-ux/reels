@@ -1,6 +1,6 @@
 import React from "react";
 import { CaixasGancho } from "../../flavia/CaixasGancho";
-import { Frase, Sintomas } from "../../flavia/kit";
+import { Frase, ImagemCard, Sintomas } from "../../flavia/kit";
 import { Card, Checklist, Headline, Scene } from "../../kit";
 
 // Bioimpedância. Tela dividida, paleta nude. Tempos = segundos da fala já cortada.
@@ -34,11 +34,12 @@ export const Flavia06Scenes: React.FC = () => (
 
     {/* 3 · bioimpedância: além do peso */}
     <Scene from={8.11} to={13.67}>
-      <Headline at={8.28} text="*Bioimpedância*" size={104} />
-      <Gap h={24} />
-      <Frase at={9.2} text="um exame que vai além do peso" size={48} />
-      <Gap h={40} />
-      <Card at={11.75} label="Ela mostra a sua" value="Composição corporal" width={700} />
+      <Headline at={8.28} text="*Bioimpedância*" size={96} />
+      <Gap h={16} />
+      <Frase at={9.2} text="um exame que vai além do peso" size={46} />
+      <Gap h={30} />
+      {/* Recorte da bioimpedância da própria Flávia (sem nome, ID nem idade) */}
+      <ImagemCard at={10.4} src="reels/flavia-06/inbody.png" width={880} etiqueta="Minha bioimpedância" />
     </Scene>
 
     {/* 4 · quanto do peso é gordura, músculo e água */}

@@ -476,3 +476,27 @@ export const Sintomas: React.FC<{ itens: { id: IconeId; nome: string; at: number
     ))}
   </div>
 );
+
+/** Imagem (ex.: recorte de exame) num cartão branco, com uma etiqueta pequena em cima. */
+export const ImagemCard: React.FC<{ at: number; src: string; width?: number; etiqueta?: string }> = ({ at, src, width = 900, etiqueta }) => (
+  <Appear at={at} from="scale">
+    <div
+      style={{
+        background: "#FFFFFF",
+        borderRadius: 28,
+        padding: "20px 22px 18px",
+        boxShadow: `0 24px 50px ${color.glow}, 0 8px 20px rgba(0,0,0,0.10)`,
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "flex-start",
+      }}
+    >
+      {etiqueta && (
+        <div style={{ fontFamily: font.body, fontWeight: 700, fontSize: 24, letterSpacing: 3, color: color.brassLight, marginBottom: 10 }}>
+          {etiqueta.toUpperCase()}
+        </div>
+      )}
+      <Img src={staticFile(src)} style={{ width, display: "block" }} />
+    </div>
+  </Appear>
+);
