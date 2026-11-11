@@ -1,0 +1,776 @@
+{
+ "duration": 46.629,
+ "language": "pt",
+ "words": [
+  {
+   "word": "A",
+   "start": 0.18,
+   "end": 0.62
+  },
+  {
+   "word": "balança",
+   "start": 0.62,
+   "end": 1.08
+  },
+  {
+   "word": "diz",
+   "start": 1.08,
+   "end": 1.3
+  },
+  {
+   "word": "que",
+   "start": 1.3,
+   "end": 1.42
+  },
+  {
+   "word": "você",
+   "start": 1.42,
+   "end": 1.56
+  },
+  {
+   "word": "perdeu",
+   "start": 1.56,
+   "end": 1.98
+  },
+  {
+   "word": "5",
+   "start": 1.98,
+   "end": 2.3
+  },
+  {
+   "word": "quilos,",
+   "start": 2.3,
+   "end": 2.72
+  },
+  {
+   "word": "mas",
+   "start": 2.82,
+   "end": 2.92
+  },
+  {
+   "word": "você",
+   "start": 2.92,
+   "end": 3.14
+  },
+  {
+   "word": "perdeu",
+   "start": 3.14,
+   "end": 3.5
+  },
+  {
+   "word": "o",
+   "start": 3.5,
+   "end": 3.62
+  },
+  {
+   "word": "quê?",
+   "start": 3.62,
+   "end": 3.7
+  },
+  {
+   "word": "Você",
+   "start": 3.82,
+   "end": 3.98
+  },
+  {
+   "word": "perdeu",
+   "start": 3.98,
+   "end": 4.28
+  },
+  {
+   "word": "gordura?",
+   "start": 4.28,
+   "end": 4.8
+  },
+  {
+   "word": "Você",
+   "start": 4.9,
+   "end": 5.08
+  },
+  {
+   "word": "perdeu",
+   "start": 5.08,
+   "end": 5.38
+  },
+  {
+   "word": "músculo?",
+   "start": 5.38,
+   "end": 5.785
+  },
+  {
+   "word": "Ou",
+   "start": 5.786,
+   "end": 5.908
+  },
+  {
+   "word": "você",
+   "start": 5.908,
+   "end": 6.108
+  },
+  {
+   "word": "perdeu",
+   "start": 6.108,
+   "end": 6.508
+  },
+  {
+   "word": "água?",
+   "start": 6.508,
+   "end": 6.731
+  },
+  {
+   "word": "Porque",
+   "start": 6.732,
+   "end": 6.943
+  },
+  {
+   "word": "isso",
+   "start": 6.943,
+   "end": 7.243
+  },
+  {
+   "word": "muda",
+   "start": 7.243,
+   "end": 7.663
+  },
+  {
+   "word": "tudo.",
+   "start": 7.663,
+   "end": 8.103
+  },
+  {
+   "word": "A",
+   "start": 8.11,
+   "end": 8.278
+  },
+  {
+   "word": "bioimpedância,",
+   "start": 8.278,
+   "end": 8.838
+  },
+  {
+   "word": "ela",
+   "start": 8.838,
+   "end": 9.018
+  },
+  {
+   "word": "é",
+   "start": 9.018,
+   "end": 9.098
+  },
+  {
+   "word": "um",
+   "start": 9.098,
+   "end": 9.198
+  },
+  {
+   "word": "exame",
+   "start": 9.198,
+   "end": 9.538
+  },
+  {
+   "word": "que",
+   "start": 9.538,
+   "end": 9.658
+  },
+  {
+   "word": "vai",
+   "start": 9.658,
+   "end": 9.858
+  },
+  {
+   "word": "além",
+   "start": 9.858,
+   "end": 10.278
+  },
+  {
+   "word": "do",
+   "start": 10.278,
+   "end": 10.478
+  },
+  {
+   "word": "peso.",
+   "start": 10.478,
+   "end": 10.757
+  },
+  {
+   "word": "Ela",
+   "start": 10.806,
+   "end": 10.946
+  },
+  {
+   "word": "mostra",
+   "start": 10.946,
+   "end": 11.346
+  },
+  {
+   "word": "o",
+   "start": 11.346,
+   "end": 11.506
+  },
+  {
+   "word": "quê?",
+   "start": 11.506,
+   "end": 11.626
+  },
+  {
+   "word": "A",
+   "start": 11.746,
+   "end": 11.866
+  },
+  {
+   "word": "sua",
+   "start": 11.866,
+   "end": 12.066
+  },
+  {
+   "word": "composição",
+   "start": 12.066,
+   "end": 13.066
+  },
+  {
+   "word": "corporal.",
+   "start": 13.066,
+   "end": 13.626
+  },
+  {
+   "word": "Quanto",
+   "start": 13.67,
+   "end": 13.965
+  },
+  {
+   "word": "do",
+   "start": 13.965,
+   "end": 14.105
+  },
+  {
+   "word": "seu",
+   "start": 14.105,
+   "end": 14.245
+  },
+  {
+   "word": "peso",
+   "start": 14.245,
+   "end": 14.465
+  },
+  {
+   "word": "é",
+   "start": 14.465,
+   "end": 14.565
+  },
+  {
+   "word": "gordura,",
+   "start": 14.565,
+   "end": 15.045
+  },
+  {
+   "word": "quanto",
+   "start": 15.145,
+   "end": 15.396
+  },
+  {
+   "word": "do",
+   "start": 15.396,
+   "end": 15.536
+  },
+  {
+   "word": "seu",
+   "start": 15.536,
+   "end": 15.696
+  },
+  {
+   "word": "peso",
+   "start": 15.696,
+   "end": 15.936
+  },
+  {
+   "word": "é",
+   "start": 15.936,
+   "end": 16.096
+  },
+  {
+   "word": "massa",
+   "start": 16.096,
+   "end": 16.476
+  },
+  {
+   "word": "muscular",
+   "start": 16.476,
+   "end": 16.896
+  },
+  {
+   "word": "e",
+   "start": 16.896,
+   "end": 17.276
+  },
+  {
+   "word": "quanto",
+   "start": 17.276,
+   "end": 17.576
+  },
+  {
+   "word": "é",
+   "start": 17.576,
+   "end": 17.856
+  },
+  {
+   "word": "água.",
+   "start": 17.856,
+   "end": 18.12
+  },
+  {
+   "word": "E",
+   "start": 18.121,
+   "end": 18.268
+  },
+  {
+   "word": "esse",
+   "start": 18.268,
+   "end": 18.508
+  },
+  {
+   "word": "detalhe",
+   "start": 18.508,
+   "end": 18.968
+  },
+  {
+   "word": "é",
+   "start": 18.968,
+   "end": 19.028
+  },
+  {
+   "word": "o",
+   "start": 19.028,
+   "end": 19.068
+  },
+  {
+   "word": "que",
+   "start": 19.068,
+   "end": 19.148
+  },
+  {
+   "word": "separa",
+   "start": 19.148,
+   "end": 19.648
+  },
+  {
+   "word": "um",
+   "start": 19.648,
+   "end": 19.728
+  },
+  {
+   "word": "emagrecimento",
+   "start": 19.728,
+   "end": 20.468
+  },
+  {
+   "word": "saudável",
+   "start": 20.468,
+   "end": 21.168
+  },
+  {
+   "word": "de",
+   "start": 21.168,
+   "end": 21.508
+  },
+  {
+   "word": "um",
+   "start": 21.508,
+   "end": 21.628
+  },
+  {
+   "word": "emagrecimento",
+   "start": 21.628,
+   "end": 22.328
+  },
+  {
+   "word": "que",
+   "start": 22.328,
+   "end": 22.468
+  },
+  {
+   "word": "vai",
+   "start": 22.468,
+   "end": 22.608
+  },
+  {
+   "word": "te",
+   "start": 22.608,
+   "end": 22.728
+  },
+  {
+   "word": "deixar",
+   "start": 22.728,
+   "end": 23.048
+  },
+  {
+   "word": "o",
+   "start": 23.048,
+   "end": 23.248
+  },
+  {
+   "word": "quê?",
+   "start": 23.248,
+   "end": 23.368
+  },
+  {
+   "word": "Mais",
+   "start": 23.608,
+   "end": 23.868
+  },
+  {
+   "word": "fraca,",
+   "start": 23.868,
+   "end": 24.288
+  },
+  {
+   "word": "mais",
+   "start": 24.361,
+   "end": 24.658
+  },
+  {
+   "word": "lenta,",
+   "start": 24.658,
+   "end": 25.078
+  },
+  {
+   "word": "com",
+   "start": 25.179,
+   "end": 25.342
+  },
+  {
+   "word": "um",
+   "start": 25.342,
+   "end": 25.422
+  },
+  {
+   "word": "metabolismo",
+   "start": 25.422,
+   "end": 25.922
+  },
+  {
+   "word": "mais",
+   "start": 25.922,
+   "end": 26.382
+  },
+  {
+   "word": "devagar.",
+   "start": 26.382,
+   "end": 26.822
+  },
+  {
+   "word": "Quando",
+   "start": 26.822,
+   "end": 27.125
+  },
+  {
+   "word": "eu",
+   "start": 27.125,
+   "end": 27.225
+  },
+  {
+   "word": "acompanho",
+   "start": 27.225,
+   "end": 27.565
+  },
+  {
+   "word": "um",
+   "start": 27.565,
+   "end": 27.685
+  },
+  {
+   "word": "paciente,",
+   "start": 27.685,
+   "end": 28.105
+  },
+  {
+   "word": "o",
+   "start": 28.205,
+   "end": 28.245
+  },
+  {
+   "word": "que",
+   "start": 28.245,
+   "end": 28.345
+  },
+  {
+   "word": "me",
+   "start": 28.345,
+   "end": 28.465
+  },
+  {
+   "word": "interessa",
+   "start": 28.465,
+   "end": 28.885
+  },
+  {
+   "word": "não",
+   "start": 28.885,
+   "end": 29.085
+  },
+  {
+   "word": "é",
+   "start": 29.085,
+   "end": 29.385
+  },
+  {
+   "word": "o",
+   "start": 29.385,
+   "end": 29.585
+  },
+  {
+   "word": "número",
+   "start": 29.585,
+   "end": 29.985
+  },
+  {
+   "word": "na",
+   "start": 29.985,
+   "end": 30.205
+  },
+  {
+   "word": "balança,",
+   "start": 30.205,
+   "end": 30.685
+  },
+  {
+   "word": "é",
+   "start": 30.741,
+   "end": 30.933
+  },
+  {
+   "word": "se",
+   "start": 30.933,
+   "end": 31.073
+  },
+  {
+   "word": "ele",
+   "start": 31.073,
+   "end": 31.253
+  },
+  {
+   "word": "está",
+   "start": 31.253,
+   "end": 31.433
+  },
+  {
+   "word": "perdendo",
+   "start": 31.433,
+   "end": 32.013
+  },
+  {
+   "word": "gordura",
+   "start": 32.013,
+   "end": 32.753
+  },
+  {
+   "word": "e",
+   "start": 32.753,
+   "end": 32.953
+  },
+  {
+   "word": "preservando",
+   "start": 32.953,
+   "end": 33.673
+  },
+  {
+   "word": "músculo.",
+   "start": 33.673,
+   "end": 34.141
+  },
+  {
+   "word": "Porque",
+   "start": 34.142,
+   "end": 34.41
+  },
+  {
+   "word": "músculo,",
+   "start": 34.41,
+   "end": 35.01
+  },
+  {
+   "word": "ele",
+   "start": 35.03,
+   "end": 35.25
+  },
+  {
+   "word": "é",
+   "start": 35.25,
+   "end": 35.37
+  },
+  {
+   "word": "o",
+   "start": 35.37,
+   "end": 35.43
+  },
+  {
+   "word": "quê?",
+   "start": 35.43,
+   "end": 35.53
+  },
+  {
+   "word": "Ele",
+   "start": 35.63,
+   "end": 35.67
+  },
+  {
+   "word": "é",
+   "start": 35.67,
+   "end": 35.75
+  },
+  {
+   "word": "metabolismo,",
+   "start": 35.75,
+   "end": 36.21
+  },
+  {
+   "word": "ele",
+   "start": 36.489,
+   "end": 36.589
+  },
+  {
+   "word": "é",
+   "start": 36.589,
+   "end": 36.709
+  },
+  {
+   "word": "saúde",
+   "start": 36.709,
+   "end": 37.109
+  },
+  {
+   "word": "óssea,",
+   "start": 37.109,
+   "end": 37.569
+  },
+  {
+   "word": "ele",
+   "start": 37.709,
+   "end": 37.849
+  },
+  {
+   "word": "é",
+   "start": 37.849,
+   "end": 38.149
+  },
+  {
+   "word": "longevidade.",
+   "start": 38.149,
+   "end": 39.014
+  },
+  {
+   "word": "Se",
+   "start": 39.015,
+   "end": 39.145
+  },
+  {
+   "word": "você",
+   "start": 39.145,
+   "end": 39.385
+  },
+  {
+   "word": "está",
+   "start": 39.385,
+   "end": 39.725
+  },
+  {
+   "word": "em",
+   "start": 39.725,
+   "end": 39.845
+  },
+  {
+   "word": "processo",
+   "start": 39.845,
+   "end": 40.285
+  },
+  {
+   "word": "de",
+   "start": 40.285,
+   "end": 40.565
+  },
+  {
+   "word": "emagrecimento",
+   "start": 40.565,
+   "end": 41.505
+  },
+  {
+   "word": "e",
+   "start": 41.505,
+   "end": 41.725
+  },
+  {
+   "word": "nunca",
+   "start": 41.725,
+   "end": 42.045
+  },
+  {
+   "word": "fez",
+   "start": 42.045,
+   "end": 42.345
+  },
+  {
+   "word": "uma",
+   "start": 42.345,
+   "end": 42.545
+  },
+  {
+   "word": "bioimpedância,",
+   "start": 42.545,
+   "end": 43.305
+  },
+  {
+   "word": "vale",
+   "start": 43.439,
+   "end": 43.579
+  },
+  {
+   "word": "conversar",
+   "start": 43.579,
+   "end": 44.139
+  },
+  {
+   "word": "com",
+   "start": 44.139,
+   "end": 44.279
+  },
+  {
+   "word": "o",
+   "start": 44.279,
+   "end": 44.399
+  },
+  {
+   "word": "seu",
+   "start": 44.399,
+   "end": 44.519
+  },
+  {
+   "word": "médico",
+   "start": 44.519,
+   "end": 44.939
+  },
+  {
+   "word": "sobre",
+   "start": 44.939,
+   "end": 45.279
+  },
+  {
+   "word": "isso.",
+   "start": 45.279,
+   "end": 45.639
+  },
+  {
+   "word": "Fica",
+   "start": 45.799,
+   "end": 46.039
+  },
+  {
+   "word": "a",
+   "start": 46.039,
+   "end": 46.159
+  },
+  {
+   "word": "dica.",
+   "start": 46.159,
+   "end": 46.419
+  }
+ ]
+}

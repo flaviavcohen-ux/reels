@@ -232,7 +232,7 @@ export const CelulasGordura: React.FC<{ at: number; size?: number }> = ({ at, si
   );
 };
 
-export type IconeId = "estetoscopio" | "mulheres" | "prancheta" | "calendario" | "humor" | "sono" | "calorao" | "libido" | "enxaqueca" | "concentracao";
+export type IconeId = "estetoscopio" | "mulheres" | "prancheta" | "calendario" | "humor" | "sono" | "calorao" | "libido" | "enxaqueca" | "concentracao" | "balanca" | "gota" | "musculo" | "gordura";
 
 const DesenhoIcone: React.FC<{ id: IconeId; size: number }> = ({ id, size }) => {
   // Cores da paleta ativa (rosé ou nude)
@@ -341,6 +341,52 @@ const DesenhoIcone: React.FC<{ id: IconeId; size: number }> = ({ id, size }) => 
         <circle cx={96} cy={104} r={9} fill={vinho} />
         <path d="M96 104 L168 36" stroke={vinho} strokeWidth={7} strokeLinecap="round" />
         <path d="M168 36 L150 36 M168 36 L168 54" stroke={vinho} strokeWidth={7} strokeLinecap="round" />
+      </svg>
+    );
+  }
+  if (id === "balanca") {
+    return (
+      <svg width={size} height={size} viewBox="0 0 200 200">
+        <rect x={30} y={40} width={140} height={130} rx={28} fill={claro} />
+        <rect x={52} y={58} width={96} height={46} rx={12} fill="#FFFFFF" />
+        <path d="M70 96 A30 30 0 0 1 130 96" fill="none" stroke={rose} strokeWidth={6} />
+        <path d="M100 96 L116 74" stroke={vinho} strokeWidth={6} strokeLinecap="round" />
+        <circle cx={100} cy={96} r={6} fill={vinho} />
+      </svg>
+    );
+  }
+  if (id === "gota") {
+    return (
+      <svg width={size} height={size} viewBox="0 0 200 200">
+        <path d="M100 24 C126 66 154 96 154 128 C154 160 130 180 100 180 C70 180 46 160 46 128 C46 96 74 66 100 24 Z" fill="#7FB3D5" />
+        <path d="M76 128 C76 146 86 156 100 158" fill="none" stroke="#FFFFFF" strokeWidth={8} strokeLinecap="round" opacity={0.7} />
+      </svg>
+    );
+  }
+  if (id === "musculo") {
+    // Haltere
+    return (
+      <svg width={size} height={size} viewBox="0 0 200 200">
+        <rect x={62} y={92} width={76} height={16} rx={6} fill={vinho} />
+        <rect x={34} y={64} width={22} height={72} rx={8} fill={rose} />
+        <rect x={144} y={64} width={22} height={72} rx={8} fill={rose} />
+        <rect x={18} y={78} width={18} height={44} rx={6} fill={vinho} />
+        <rect x={164} y={78} width={18} height={44} rx={6} fill={vinho} />
+      </svg>
+    );
+  }
+  if (id === "gordura") {
+    const cells = [
+      [100, 100, 34], [44, 78, 28], [156, 74, 30], [66, 146, 30], [136, 148, 32], [100, 38, 24],
+    ];
+    return (
+      <svg width={size} height={size} viewBox="0 0 200 200">
+        {cells.map(([x, y, r], i) => (
+          <g key={i}>
+            <circle cx={x} cy={y} r={r} fill="#F7E3A8" stroke="#D9B98F" strokeWidth={3} />
+            <circle cx={x + r * 0.55} cy={y + r * 0.45} r={4} fill={vinho} />
+          </g>
+        ))}
       </svg>
     );
   }
