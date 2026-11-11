@@ -232,7 +232,7 @@ export const CelulasGordura: React.FC<{ at: number; size?: number }> = ({ at, si
   );
 };
 
-export type IconeId = "estetoscopio" | "mulheres" | "prancheta" | "calendario";
+export type IconeId = "estetoscopio" | "mulheres" | "prancheta" | "calendario" | "humor" | "sono" | "calorao" | "libido" | "enxaqueca" | "concentracao";
 
 const DesenhoIcone: React.FC<{ id: IconeId; size: number }> = ({ id, size }) => {
   const vinho = "#B65C76";
@@ -277,6 +277,69 @@ const DesenhoIcone: React.FC<{ id: IconeId; size: number }> = ({ id, size }) => 
           <rect key={y} x={70} y={y} width={60} height={7} rx={3} fill={claro} />
         ))}
         <path d="M78 140 L94 154 L124 126" fill="none" stroke={vinho} strokeWidth={10} strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    );
+  }
+  if (id === "humor") {
+    // Duas carinhas: uma feliz, outra triste (oscilação de humor)
+    return (
+      <svg width={size} height={size} viewBox="0 0 200 200">
+        <circle cx={78} cy={92} r={52} fill={claro} />
+        <circle cx={62} cy={80} r={6} fill={vinho} />
+        <circle cx={94} cy={80} r={6} fill={vinho} />
+        <path d="M58 104 Q78 124 98 104" fill="none" stroke={vinho} strokeWidth={7} strokeLinecap="round" />
+        <circle cx={128} cy={118} r={52} fill={rose} />
+        <circle cx={112} cy={106} r={6} fill="#FFFFFF" />
+        <circle cx={144} cy={106} r={6} fill="#FFFFFF" />
+        <path d="M108 140 Q128 122 148 140" fill="none" stroke="#FFFFFF" strokeWidth={7} strokeLinecap="round" />
+      </svg>
+    );
+  }
+  if (id === "sono") {
+    return (
+      <svg width={size} height={size} viewBox="0 0 200 200">
+        <path d="M120 30 A72 72 0 1 0 170 140 A58 58 0 1 1 120 30 Z" fill={vinho} />
+        <circle cx={150} cy={52} r={6} fill={rose} />
+        <circle cx={168} cy={84} r={4} fill={rose} />
+        <circle cx={132} cy={78} r={3.5} fill={rose} />
+      </svg>
+    );
+  }
+  if (id === "calorao") {
+    return (
+      <svg width={size} height={size} viewBox="0 0 200 200">
+        <path d="M100 20 C130 60 160 80 150 130 C142 168 112 182 100 182 C80 182 50 168 48 130 C46 100 66 86 76 60 C84 84 92 92 100 96 C108 76 106 50 100 20 Z" fill="#E77A5B" />
+        <path d="M100 100 C116 120 128 134 122 156 C118 170 108 176 100 176 C90 176 78 168 78 152 C78 136 90 128 100 100 Z" fill="#F7C46C" />
+      </svg>
+    );
+  }
+  if (id === "libido") {
+    return (
+      <svg width={size} height={size} viewBox="0 0 200 200">
+        <path d="M100 172 C40 130 22 98 30 70 C38 42 76 34 100 64 C124 34 162 42 170 70 C178 98 160 130 100 172 Z" fill={vinho} />
+        <path d="M62 66 C70 58 80 58 86 64" fill="none" stroke="#FFFFFF" strokeWidth={6} strokeLinecap="round" opacity={0.6} />
+      </svg>
+    );
+  }
+  if (id === "enxaqueca") {
+    // Cabeça de perfil com raio
+    return (
+      <svg width={size} height={size} viewBox="0 0 200 200">
+        <path d="M70 170 V140 C46 126 40 100 46 78 C54 46 84 28 116 32 C150 36 170 62 166 92 L176 116 L162 120 V140 C162 150 154 156 144 156 H126 V170 Z" fill={claro} />
+        <path d="M118 50 L96 92 H116 L98 132 L140 82 H118 L134 50 Z" fill="#F2B84B" stroke="#E2A92A" strokeWidth={2} />
+      </svg>
+    );
+  }
+  if (id === "concentracao") {
+    // Alvo com seta (foco)
+    return (
+      <svg width={size} height={size} viewBox="0 0 200 200">
+        <circle cx={96} cy={104} r={70} fill={claro} />
+        <circle cx={96} cy={104} r={48} fill="#FFFFFF" />
+        <circle cx={96} cy={104} r={26} fill={rose} />
+        <circle cx={96} cy={104} r={9} fill={vinho} />
+        <path d="M96 104 L168 36" stroke={vinho} strokeWidth={7} strokeLinecap="round" />
+        <path d="M168 36 L150 36 M168 36 L168 54" stroke={vinho} strokeWidth={7} strokeLinecap="round" />
       </svg>
     );
   }
@@ -351,3 +414,18 @@ export const Flutuante: React.FC<{ y?: number; x?: number; width?: number; child
   const topoDaArea = area.variant === "cheia" ? CHEIA_TOP : 0;
   return <div style={{ position: "absolute", top: y - topoDaArea, left: x, width, display: "flex", justifyContent: "center" }}>{children}</div>;
 };
+
+
+/** Grade de sintomas: cada ícone entra no segundo em que ela fala o nome. */
+export const Sintomas: React.FC<{ itens: { id: IconeId; nome: string; at: number }[]; size?: number }> = ({ itens, size = 140 }) => (
+  <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "26px 18px", width: 960 }}>
+    {itens.map((it) => (
+      <div key={it.nome} style={{ width: 220, display: "flex", flexDirection: "column", alignItems: "center" }}>
+        <Icone at={it.at} id={it.id} size={size} />
+        <Appear at={it.at + 0.1} from="up">
+          <div style={{ fontFamily: font.body, fontWeight: 700, fontSize: 36, color: color.bone, marginTop: 12, textAlign: "center" }}>{it.nome}</div>
+        </Appear>
+      </div>
+    ))}
+  </div>
+);

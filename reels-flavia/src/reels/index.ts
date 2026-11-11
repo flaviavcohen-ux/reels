@@ -4,6 +4,7 @@ import { Flavia01Scenes } from "./flavia-01/Scenes";
 import { Flavia02Scenes } from "./flavia-02/Scenes";
 import { Flavia03Scenes } from "./flavia-03/Scenes";
 import { Flavia04Scenes } from "./flavia-04/Scenes";
+import { Flavia05Scenes } from "./flavia-05/Scenes";
 
 // Cada Reel novo entra aqui. Exemplo de Reel real em references/exemplo-reel.md da skill.
 export const reels: ReelDef[] = [
@@ -41,4 +42,11 @@ export const reels: ReelDef[] = [
     faceSegments: [{ from: 0, position: "50% 34%" }],
   },
   { id: "flavia-04", layout: "cheia", Scenes: Flavia04Scenes, tag: "@flaviavcohen", velocidade: 1.1 },
+  {
+    id: "flavia-05",
+    Scenes: Flavia05Scenes,
+    tag: "@flaviavcohen",
+    velocidade: 1.1,
+    faceSegments: [{ from: 0, position: "50% 20%" }], // sentada à mesa, blazer cinza
+  },
 ];
